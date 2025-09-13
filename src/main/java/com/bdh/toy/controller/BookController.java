@@ -1,10 +1,8 @@
 package com.bdh.toy.controller;
 
 import com.bdh.toy.dto.GetBookListDTO;
-import com.bdh.toy.entity.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class HelloController {
+public class BookController {
     @Value("{book.url}")
     private String bookUrl;
 
