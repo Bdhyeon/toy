@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>BokBokBook</title>
 </head>
 <body>
-
+<form action="/account/login" method="post" name="login">
+    <div class="top">
+        <input type="text" class="form-control mb-1 p-3" name="userId" id="userId" placeholder="아이디를 입력해주세요."/>
+        <input type="password" class="form-control mb-1 p-3" name="password" id="password" placeholder="비밀번호를 입력해주세요"/>
+        <div class="remember-box p-1">
+            <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me">
+            <label for="remember-me" class="form-label">로그인 상태 유지</label>
+        </div>
+    </div>
+    <div class="middle d-flex flex-column">
+        <div class="message" th:if="${hasMessage == true}" th:text="${message}">
+        </div>
+        <button type="submit" class="login btn btn-primary form-control p-3 mb-1">로그인</button>
+    </div>
+    <div class="bottom">
+        <a href="">아이디 찾기</a>
+        <a href="">비밀번호 찾기</a>
+        <a href="/account/register">회원가입 하기</a>
+    </div>
+</form>
 </body>
 </html>

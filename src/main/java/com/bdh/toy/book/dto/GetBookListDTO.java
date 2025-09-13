@@ -1,4 +1,4 @@
-package com.bdh.toy.dto;
+package com.bdh.toy.book.dto;
 
 import java.time.LocalDateTime;
 

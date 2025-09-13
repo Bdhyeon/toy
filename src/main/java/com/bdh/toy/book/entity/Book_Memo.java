@@ -1,4 +1,4 @@
-package com.bdh.toy.entity;
+package com.bdh.toy.book.entity;
 
 public class Book_Memo {
     private Long id;

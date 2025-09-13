@@ -1,6 +1,6 @@
-package com.bdh.toy.repository;
+package com.bdh.toy.book.repository;
 
-import com.bdh.toy.entity.Book;
+import com.bdh.toy.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book,Long> {

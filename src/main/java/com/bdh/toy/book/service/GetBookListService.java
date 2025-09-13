@@ -1,4 +1,4 @@
-package com.bdh.toy.service;
+package com.bdh.toy.book.service;
 
 public class GetBookListService {
 }

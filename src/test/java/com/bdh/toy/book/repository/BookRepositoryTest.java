@@ -1,6 +1,6 @@
-package com.bdh.toy.repository;
+package com.bdh.toy.book.repository;
 
-import com.bdh.toy.entity.Book;
+import com.bdh.toy.book.entity.Book;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

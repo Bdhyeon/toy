@@ -1,4 +1,4 @@
-package com.bdh.toy.entity;
+package com.bdh.toy.login.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

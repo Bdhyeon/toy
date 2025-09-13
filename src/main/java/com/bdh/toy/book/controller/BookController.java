@@ -1,6 +1,6 @@
-package com.bdh.toy.controller;
+package com.bdh.toy.book.controller;
 
-import com.bdh.toy.dto.GetBookListDTO;
+import com.bdh.toy.book.dto.GetBookListDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
