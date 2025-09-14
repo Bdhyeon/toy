@@ -1,6 +1,5 @@
 package com.bdh.toy.book.entity;
 
-import com.bdh.toy.entity.Score;
 import jakarta.persistence.*;
 import lombok.*;
 
