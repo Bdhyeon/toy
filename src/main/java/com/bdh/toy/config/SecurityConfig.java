@@ -45,6 +45,12 @@ public class SecurityConfig {
                                 .failureHandler(new LoginFailHandler())
                                 .defaultSuccessUrl("/book/main")
                                 .permitAll())
+                .exceptionHandling(exceptionHandlingConfig ->
+                        exceptionHandlingConfig
+                                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                                    response.sendRedirect("/error/403");
+                                })
+                )
                 .rememberMe(customizer -> customizer
                         .rememberMeParameter("remember-me")
                         .tokenValiditySeconds(ONE_MONTH)
@@ -52,7 +58,7 @@ public class SecurityConfig {
                         .userDetailsService(memberDetailService))
                 .logout(customizer -> customizer
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/logout")
+                        .logoutSuccessUrl("/login")
                         .deleteCookies("remember-me")
                         .permitAll()
                 );
