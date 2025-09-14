@@ -37,7 +37,7 @@ public class SecurityConfig {
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLoginConfig ->
-                        formLoginConfig.loginPage("/login")
+                        formLoginConfig.loginPage("/login/")
                                 .loginProcessingUrl("/account/login")
                                 .usernameParameter("userId")
                                 .passwordParameter("password")
@@ -58,7 +58,7 @@ public class SecurityConfig {
                         .userDetailsService(memberDetailService))
                 .logout(customizer -> customizer
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login/")
                         .deleteCookies("remember-me")
                         .permitAll()
                 );

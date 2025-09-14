@@ -25,19 +25,23 @@
         <button type="button" onclick="getRegisterForm()">회원가입</button>
     </div>
 </form>
-<div id="registerForm"></div>
+<form th:action="@{/login/register}" th:object="${registerDTO}" method="post">
+    <input type="text" th:field="*{registerId}" placeholder="아이디">
+    <div th:if="${#fields.hasErrors('registerId')}" th:errors="*{registerId}"></div>
+
+    <input type="password" th:field="*{registerPassword}" placeholder="비밀번호">
+    <div th:if="${#fields.hasErrors('registerPassword')}" th:errors="*{registerPassword}"></div>
+
+    <input type="email" th:field="*{registerEmail}" placeholder="이메일">
+    <div th:if="${#fields.hasErrors('registerEmail')}" th:errors="*{registerEmail}"></div>
+
+    <button type="submit">가입 신청하기</button>
+</form>
 </body>
 </html>
 
 <script>
     function getRegisterForm() {
-        const listDiv = document.getElementById('registerForm');
-        let registerFormHtml = '<form action="/login/register" method="post">';
-        registerFormHtml += '<input type="text" name="registerId" placeholder="가입할 아이디를 입력하세요.">';
-        registerFormHtml += '<input type="password" name="registerPassword" placeholder="가입할 비밀번호를 입력하세요.">';
-        registerFormHtml += '<input type="email" name="registerEmail" placeholder="가입할 이메일을 입력하세요.">';
-        registerFormHtml += '<button type="submit">가입 신청하기</button>'
-        registerFormHtml += '</form>';
-        listDiv.innerHTML = registerFormHtml;
+
     }
 </script>
