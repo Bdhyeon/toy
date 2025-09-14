@@ -32,7 +32,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorizeHttpRequestsConfig ->
                         authorizeHttpRequestsConfig
-                                .requestMatchers("/", "/login/**").permitAll()
+                                .requestMatchers("/", "/login/**", "/error/**").permitAll()
                                 .requestMatchers("/book/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
