@@ -21,9 +21,9 @@ public class Member {
     private String password;
     @Column(length = 200)
     private String email;
-    @Column
+    @Column(insertable = false, updatable = false)
     private Integer failCnt;
-    @Column
+    @Column(insertable = false, updatable = false)
     private LocalDate registeredAt;
     @Column
     private String role;
