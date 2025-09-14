@@ -31,8 +31,7 @@ public class Member {
     @Transient
     private Role roleId;
 
-    private void setRole(String role){
-        this.role = role;
+    public void setRoleId(){
         this.roleId = Role.valueOf(role);
     }
 }

@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeHttpRequestsConfig ->
                         authorizeHttpRequestsConfig
                                 .requestMatchers("/", "/login/**").permitAll()
-                                .requestMatchers("/book/**").hasRole(Role.USER.name())
+                                .requestMatchers("/book/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLoginConfig ->
@@ -43,6 +43,7 @@ public class SecurityConfig {
                                 .passwordParameter("password")
                                 .successHandler(new LoginSuccessHandler())
                                 .failureHandler(new LoginFailHandler())
+                                .defaultSuccessUrl("/book/main")
                                 .permitAll())
                 .rememberMe(customizer -> customizer
                         .rememberMeParameter("remember-me")

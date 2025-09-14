@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @Controller
-public class WebController {
+public class LoginController {
 
     @GetMapping("/login")
     public String main(){
-        return "/main.html";
+        return "/login.html";
     }
 }

@@ -5,8 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -14,14 +15,16 @@ import java.net.URI;
 import java.util.List;
 
 @Slf4j
-@RestController
+@Controller
+@RequestMapping(value = "/book")
 public class BookController {
-    @Value("{book.url}")
+    @Value("${book.url}")
     private String bookUrl;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello";
+    @GetMapping("/main")
+    public String main(){
+
+        return "/book_main";
     }
 
     public ResponseEntity<List> getBookList(){

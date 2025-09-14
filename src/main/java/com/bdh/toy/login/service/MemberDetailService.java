@@ -23,6 +23,7 @@ public class MemberDetailService implements UserDetailsService {
             throw  new UsernameNotFoundException(userId);
         }
 
+        member.setRoleId();
         MemberDTO dto =  new MemberDTO();
         dto.setUsername(member.getUserId());
         dto.setPassword(member.getPassword());
