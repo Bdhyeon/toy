@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class GetBookListDTO {
+public class GetBookResponse {
     private String key;
     private String srchTarget;
     private String kwd;
