@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class GetBookListDTO {
+public class GetBookRequest {
     private String key;
     private String srchTarget;
     private String kwd;
@@ -14,5 +14,5 @@ public class GetBookListDTO {
     private String systemType;
     private String category;
     private String sort;
-    private String apiType; // xml, json
+    private final String apiType = "json"; // xml, json
 }

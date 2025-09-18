@@ -6,6 +6,12 @@
 </head>
 <body>
 복복북 메인입니다.
+<form action="/book/list" method="post">
+    <input type="text" name="kwd"/>
+    <input type="text" name="pageNum" value="1"/>
+    <input type="text" name="pageSize" value="10"/>
+    <button type="submit">책줘!!</button>
+</form>
 <form action="/logout">
     <button type="submit">로그아웃</button>
 </form>
