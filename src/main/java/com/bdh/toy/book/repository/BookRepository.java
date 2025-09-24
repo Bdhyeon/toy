@@ -43,4 +43,11 @@ public class BookRepository {
     public void save(Book book){
         entityManager.persist(book);
     }
+
+    @Transactional
+    public void delete(List<Long> idList) {
+        jpaQueryFactory.delete(book)
+                .where(book.Id.in(idList))
+                .execute();
+    }
 }

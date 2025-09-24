@@ -2,6 +2,7 @@ package com.bdh.toy.book.controller;
 
 import com.bdh.toy.book.dto.GetBookRequest;
 import com.bdh.toy.book.entity.Book;
+import com.bdh.toy.book.service.DeleteBookService;
 import com.bdh.toy.book.service.GetBookListService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
     private final GetBookListService  getBookListService;
+    private final DeleteBookService deleteBookService;
 
     @PostMapping("/list")
     public ResponseEntity<List<Book>> getBookList(@RequestBody GetBookRequest getBookRequest){
@@ -25,5 +27,13 @@ public class BookController {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bookList);
+    }
+
+    @DeleteMapping("/book")
+    public ResponseEntity<Integer> deleteBook(@RequestBody List<Long> idList){
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(deleteBookService.delete(idList));
     }
 }
