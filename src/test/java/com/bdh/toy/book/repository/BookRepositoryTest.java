@@ -1,16 +1,19 @@
 package com.bdh.toy.book.repository;
 
 import com.bdh.toy.book.entity.Book;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@DataJpaTest
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestPropertySource(locations = "classpath:application-test.yml")
 public class BookRepositoryTest {
     @Autowired
     private BookRepository bookRepository;
@@ -18,6 +21,7 @@ public class BookRepositoryTest {
     @DisplayName("도서 저장 성공")
     @Test
     @Order(1)
+    @Transactional
     public void save() {
         //given
         Book book = Book.builder().title("자몽 살구 클럽")

@@ -23,6 +23,8 @@ public class Book {
     private String publisher;
     @Column
     private LocalDate publishedAt;
+
+    @Transient
     private Score score;
 
 }

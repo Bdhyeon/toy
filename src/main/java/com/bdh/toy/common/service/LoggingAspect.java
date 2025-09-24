@@ -38,7 +38,8 @@ public class LoggingAspect {
         Object returnObj = joinPoint.proceed();
 
         // 메서드 리턴값 로깅
-        log.info("-- return type = {} / value = {}", returnObj.getClass().getSimpleName(), returnObj);
+        if (returnObj != null)
+            log.info("-- return type = {} / value = {}", returnObj.getClass().getSimpleName(), returnObj);
 
         return returnObj;
     }
