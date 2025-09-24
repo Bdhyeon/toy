@@ -5,6 +5,7 @@ import com.bdh.toy.book.entity.Book;
 import com.bdh.toy.book.entity.QBook;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,9 @@ public class BookRepository {
 
     public List<Book> findFromDbByTitleWriterPublisher(GetBookRequest getBookRequest){
         return jpaQueryFactory.selectFrom(book)
-                .where()
+                .where(book.title.contains(getBookRequest.getKwd())
+                        .or(book.publisher.contains(getBookRequest.getKwd())
+                        .or(book.writer.contains(getBookRequest.getKwd()))))
                 .fetch();
     }
 
@@ -29,10 +32,14 @@ public class BookRepository {
                 .fetchOne();
     }
 
+    @Transactional
     public void saveAll(List<Book> bookList){
-        entityManager.persist(bookList);
+        for (Book book : bookList) {
+            entityManager.persist(book);
+        }
     }
 
+    @Transactional
     public void save(Book book){
         entityManager.persist(book);
     }

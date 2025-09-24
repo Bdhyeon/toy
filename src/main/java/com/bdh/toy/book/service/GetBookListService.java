@@ -34,10 +34,10 @@ public class GetBookListService {
     private String bookKey;
 
     public List<Book> getBookList(GetBookRequest getBookRequest){
-        List<Book> bookList = new ArrayList<>();
+        List<Book> bookList;
         bookList = bookRepository.findFromDbByTitleWriterPublisher(getBookRequest);
 
-        if (bookList == null) { // db에 데이터 없는 경우
+        if (bookList == null || bookList.isEmpty()) { // db에 데이터 없는 경우
             bookList = findFromWeb(getBookRequest); // web에서 조회
             if (!bookList.isEmpty()) {
                 bookRepository.saveAll(bookList);
@@ -64,13 +64,15 @@ public class GetBookListService {
 
         ResponseEntity<GetBookResponse> responseEntity = getRestTemplate().exchange(requestEntity, GetBookResponse.class);
         GetBookResponse getBookResponse = responseEntity.getBody();
-        for (GetBookResult result : getBookResponse.getResult()) {
-            Book book = Book.builder()
-                    .title(result.getTitleInfo())
-                    .writer(result.getAuthorInfo())
-                    .publisher(result.getPubInfo())
-                    .build();
-            bookList.add(book);
+        if (getBookResponse != null && getBookResponse.getResult() != null) {
+            for (GetBookResult result : getBookResponse.getResult()) {
+                Book book = Book.builder()
+                        .title(result.getTitleInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
+                        .writer(result.getAuthorInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
+                        .publisher(result.getPubInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
+                        .build();
+                bookList.add(book);
+            }
         }
 
         return bookList;

@@ -1,6 +1,5 @@
 package com.bdh.toy.config;
 
-import com.bdh.toy.login.entity.Role;
 import com.bdh.toy.login.service.LoginFailHandler;
 import com.bdh.toy.login.service.LoginSuccessHandler;
 import com.bdh.toy.login.service.MemberDetailService;
@@ -32,8 +31,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorizeHttpRequestsConfig ->
                         authorizeHttpRequestsConfig
-                                .requestMatchers("/", "/login/**", "/error/**").permitAll()
-                                .requestMatchers("/book/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())
+                                .requestMatchers("/", "/login/**", "/error/**", "/book/**").permitAll()
+                                // .requestMatchers("/book/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLoginConfig ->
