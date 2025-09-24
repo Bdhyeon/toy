@@ -17,6 +17,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,19 +59,24 @@ public class GetBookListService {
         RequestEntity<Void> requestEntity = RequestEntity
                 .get(uri + "?key=" + bookKey
                         + "&pageNum=" + getBookRequest.getPageNum()
-                        + "&apiType=" + getBookRequest.getApiType()
+                        + "&apiType=" + getBookRequest.getAPI_TYPE()
                         + "&pageSize=" + getBookRequest.getPageSize()
-                        + "&kwd=" + getBookRequest.getKwd())
+                        + "&kwd=" + getBookRequest.getKwd()
+                        + "&category=" + getBookRequest.getCATEGORY())
                 .build();
 
         ResponseEntity<GetBookResponse> responseEntity = getRestTemplate().exchange(requestEntity, GetBookResponse.class);
         GetBookResponse getBookResponse = responseEntity.getBody();
         if (getBookResponse != null && getBookResponse.getResult() != null) {
             for (GetBookResult result : getBookResponse.getResult()) {
+                if (result.getPubYearInfo() == null ||  result.getPubYearInfo().length() != 8) continue;
+                String pre = "<span class=\"searching_txt\">";
+                String post = "</span>";
                 Book book = Book.builder()
-                        .title(result.getTitleInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
-                        .writer(result.getAuthorInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
-                        .publisher(result.getPubInfo().replace("<span class=\"searching_txt\">", "").replace("</span>", ""))
+                        .title(result.getTitleInfo().replace(pre, "").replace(post, ""))
+                        .writer(result.getAuthorInfo().replace(pre, "").replace(post, ""))
+                        .publisher(result.getPubInfo().replace(pre, "").replace(post, ""))
+                        .publishedAt(LocalDate.parse(result.getPubYearInfo(), DateTimeFormatter.ofPattern("yyyyMMdd")))
                         .build();
                 bookList.add(book);
             }

@@ -11,6 +11,7 @@ public class GetBookResult {
     private String placeInfo;
     private String authorInfo;
     private String pubInfo;
+    private String pubYearInfo;
     private String regData;
     private String isbn;
     private String imageUrl;
