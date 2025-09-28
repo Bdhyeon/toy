@@ -42,6 +42,13 @@ jobs:
     - name: Copy script
       run: cp ./scripts/*.sh ./deploy
 
+    - name: Create .env file
+      run: |
+        echo "DB_URL=${{ secrets.DB_URL }}" > ./deploy/.env
+        echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> ./deploy/.env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> ./deploy/.env
+        echo "BOOK_API_KEY=${{ secrets.BOOK_API_KEY }}" >> ./deploy/.env
+        
     - name: Make zip file
       run: zip -r ./bokbokbook.zip ./deploy
       shell: bash
@@ -61,10 +68,6 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        DB_URL: ${{ secrets.DB_URL }}
-        DB_USERNAME: ${{ secrets.DB_USERNAME }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        BOOK_API_KEY: ${{ secrets.BOOK_API_KEY }}
       run: |
         aws deploy create-deployment \
         --application-name bokbokbook_codedeploy \
