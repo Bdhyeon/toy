@@ -3,7 +3,7 @@
 REPOSITORY=/home/ubuntu/app
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
-PORT = $(8080)
+PORT = $(8081)
 CURRENT_PID=$(sudo lsof -t -i:$PORT)
 
 echo "현재 구동 중인 애플리케이션 pid: $CURRENT_PID"
@@ -29,8 +29,8 @@ chmod +x $JAR_NAME
 echo "> $JAR_NAME 실행"
 
 nohup java -jar \
-  -Dspring.datasource.url=$DB_URL \
-  -Dspring.datasource.username=$DB_USERNAME \
-  -Dspring.datasource.password=$DB_PASSWORD \
-  -Dbook.api.key=$BOOK_API_KEY \
+  DB_URL=$DB_URL \
+  DB_USERNAME=$DB_USERNAME \
+  DB_PASSWORD=$DB_PASSWORD \
+  BOOK_API_KEY=$BOOK_API_KEY \
   $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
