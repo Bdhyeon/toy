@@ -40,7 +40,7 @@ jobs:
 
     - name: Create .env file
       run: |
-        printf 'export DB_URL=%s\nexport DB_USERNAME=%s\nexport DB_PASSWORD=%s\nexport BOOK_API_KEY=%s\n' "${{ secrets.DB_URL }}" "${{ secrets.DB_USERNAME }}" "${{ secrets.DB_PASSWORD }}" "${{ secrets.BOOK_API_KEY }}" > ./deploy/.env
+        printf 'DB_URL=%s\nDB_USERNAME=%s\nDB_PASSWORD=%s\nBOOK_API_KEY=%s\n' "${{ secrets.DB_URL }}" "${{ secrets.DB_USERNAME }}" "${{ secrets.DB_PASSWORD }}" "${{ secrets.BOOK_API_KEY }}" > ./deploy/.env
         
     - name: Make zip file
       run: zip -r ./bokbokbook.zip ./deploy
