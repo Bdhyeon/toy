@@ -32,4 +32,10 @@ export DB_PASSWORD=$DB_PASSWORD
 export BOOK_API_KEY=$BOOK_API_KEY
 echo "> $JAR_NAME 실행"
 
-nohup java -jar -Duser.timezone=Asia/Seoul $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
+nohup env \
+  DB_URL="$DB_URL" \
+  DB_USERNAME="$DB_USERNAME" \
+  DB_PASSWORD="$DB_PASSWORD" \
+  BOOK_API_KEY="$BOOK_API_KEY" \
+  java -jar -Duser.timezone=Asia/Seoul "$JAR_NAME" \
+  >> $REPOSITORY/nohup.out 2>&1 &
