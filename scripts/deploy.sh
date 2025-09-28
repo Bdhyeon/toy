@@ -33,4 +33,4 @@ nohup java -jar \
   -Dspring.datasource.username=$DB_USERNAME \
   -Dspring.datasource.password=$DB_PASSWORD \
   -Dbook.api.key=$BOOK_API_KEY \
-  /home/ubuntu/app/app.jar >> /home/ubuntu/app/nohup.out 2>&1 &
+  $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
