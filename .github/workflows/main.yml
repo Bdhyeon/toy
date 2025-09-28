@@ -61,10 +61,14 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        DB_URL: ${{ secrets.DB_URL }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        BOOK_API_KEY: ${{ secrets.BOOK_API_KEY }}
       run: |
         aws deploy create-deployment \
-        --application-name bokbokbook\
+        --application-name bokbokbook_codedeploy \
         --deployment-group-name bokbokbook-group \
         --file-exists-behavior OVERWRITE \
-        --s3-location bucket=bokbokbook,bundleType=zip,key=bokbokbook.zip \ 
+        --s3-location bucket=bokbokbook,bundleType=zip,key=bokbokbook.zip \
         --region ap-northeast-2
