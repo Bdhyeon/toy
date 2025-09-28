@@ -26,11 +26,11 @@ echo "> $JAR_NAME 에 실행권한 추가"
 
 chmod +x $JAR_NAME
 
-export DB_URL=${DB_URL}
-export DB_USERNAME=${DB_USERNAME}
-export DB_PASSWORD=${DB_PASSWORD}
-export BOOK_API_KEY=${BOOK_API_KEY}
-
 echo "> $JAR_NAME 실행"
 
-nohup java -jar -Duser.timezone=Asia/Seoul $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar \
+  -Dspring.datasource.url=$DB_URL \
+  -Dspring.datasource.username=$DB_USERNAME \
+  -Dspring.datasource.password=$DB_PASSWORD \
+  -Dbook.api.key=$BOOK_API_KEY \
+  /home/ubuntu/app/app.jar >> /home/ubuntu/app/nohup.out 2>&1 &
