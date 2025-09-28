@@ -26,6 +26,8 @@ echo "> $JAR_NAME 에 실행권한 추가"
 
 chmod +x $JAR_NAME
 
+source /home/ec2-user/app/.env
+
 export DB_URL=$DB_URL
 export DB_USERNAME=$DB_USERNAME
 export DB_PASSWORD=$DB_PASSWORD
