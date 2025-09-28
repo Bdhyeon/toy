@@ -26,11 +26,10 @@ echo "> $JAR_NAME 에 실행권한 추가"
 
 chmod +x $JAR_NAME
 
+export DB_URL=$DB_URL
+export DB_USERNAME=$DB_USERNAME
+export DB_PASSWORD=$DB_PASSWORD
+export BOOK_API_KEY=$BOOK_API_KEY
 echo "> $JAR_NAME 실행"
 
-nohup java -jar \
-  DB_URL=$DB_URL \
-  DB_USERNAME=$DB_USERNAME \
-  DB_PASSWORD=$DB_PASSWORD \
-  BOOK_API_KEY=$BOOK_API_KEY \
-  $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar -Duser.timezone=Asia/Seoul $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
