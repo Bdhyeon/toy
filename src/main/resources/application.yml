@@ -6,10 +6,10 @@ spring:
       name: user
       password: 1111
   datasource:
-    url: ${DB_URL}
+    url: ${spring.datasource.url:}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: ${spring.datasource.username:}
+    password: ${spring.datasource.password:}
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
@@ -27,4 +27,4 @@ server:
 # 도서 url
 book:
   url: https://www.nl.go.kr/NL/search/openApi/search.do
-  key: ${BOOK_API_KEY}
+  key: ${book.api.key:}
