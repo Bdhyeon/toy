@@ -42,4 +42,4 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./bokbokbook.zip s3://BOKBOKBOOK/
+      run: aws s3 cp --region ap-northeast-2 ./bokbokbook.zip s3://bokbokbook/
