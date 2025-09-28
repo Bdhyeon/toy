@@ -67,7 +67,7 @@ jobs:
         BOOK_API_KEY: ${{ secrets.BOOK_API_KEY }}
       run: |
         aws deploy create-deployment \
-        --application-name bokbokbook\
+        --application-name bokbokbook \
         --deployment-group-name bokbokbook-group \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=bokbokbook,bundleType=zip,key=bokbokbook.zip \
