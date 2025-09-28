@@ -16,3 +16,8 @@ hooks:
     - location: deploy.sh
       timeout: 60
       runas: ubuntu
+      environment:
+        DB_URL: "${DB_URL}"
+        DB_USERNAME: "${DB_USERNAME}"
+        DB_PASSWORD: "${DB_PASSWORD}"
+        BOOK_API_KEY: "${BOOK_API_KEY}"
