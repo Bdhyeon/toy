@@ -66,5 +66,5 @@ jobs:
         --application-name bokbokbook\
         --deployment-group-name bokbokbook-group \
         --file-exists-behavior OVERWRITE \
-        --s3-location bucket=bokbokbook,bundleType=zip,key=bokbokbook.zip \ 
+        --s3-location bucket=bokbokbook,bundleType=zip,key=bokbokbook.zip \
         --region ap-northeast-2
