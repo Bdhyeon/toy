@@ -2,7 +2,7 @@
 <configuration>
 
     <!--로그 파일 저장 위치-->
-    <property name="LOGS_PATH" value="C:/Users/User/Desktop/study/side_pro/log/bokbokbook"/>
+    <property name="LOGS_PATH" value="/home/ubuntu/app/logs/bokbokbook"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 출력패턴 설정-->
