@@ -30,11 +30,7 @@ jobs:
     - name: Copy Jar
       run: cp ./build/libs/*.jar ./deploy
 
-    - name: Make zip file
-      run: zip -r ./bokbokbook.zip ./deploy
-      shell: bash
-
-# appspec.yml 파일 복사
+    # appspec.yml 파일 복사
     - name: Copy appspec.yml
       run: cp appspec.yml ./deploy
 
